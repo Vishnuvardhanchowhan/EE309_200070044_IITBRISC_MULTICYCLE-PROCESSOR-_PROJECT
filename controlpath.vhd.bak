@@ -1,0 +1,413 @@
+library ieee;
+use ieee.numeric_std.all;
+use ieee.std_logic_1164.all;
+use ieee.math_real.all;
+
+library work;
+use work.basic.all;
+
+entity controlpath is
+	port(  -----mux signals-----------------
+		m_a3_0,m_a3_1 : out std_logic;
+		m_d3_0,m_d3_1 : out std_logic;
+		m_z   ,m_mem_a        : in std_logic;
+		m_op1_0,m_op1_1      : out std_logic;
+		m_op2_0,m_op2_1      : out std_logic;
+		m_a2          : out std_logic;
+		m_comp_a,m_comp_b:out std_logic;
+		wr_mem        : out std_logic;   
+		rd_mem        : out std_logic;   
+		wr_rf         : out std_logic;   
+		m_a1			  : out std_logic;
+		m_op1         : out std_logic;
+		-----enable---------------------
+		en_ir,en_irf  : out std_logic;	 
+		en_A     : out std_logic;   
+		en_c,en_z     : out std_logic;
+		-----------------------------------------------------------------------------
+		op_sel        : out std_logic;   --operation select by alu
+
+		equ      : in std_logic;  --eqcheck
+		C,Z      : in std_logic;  --carry,zero
+		-----------------------------------------------------------------------------load     : out std_logic;
+		op_code  : in std_logic_vector(3 downto 0);  --first 4 bits of IR which is op_code
+		condition_code: in std_logic_vector(1 downto 0);    --last 2 bits of IR
+
+		clk,reset: in std_logic
+	    );
+end entity;
+
+architecture behave of controlpath is
+	type state is ( RST,RST1,                                 );
+	signal Q, nQ : state := RST;       ---initialised at HKT1 (InstructionFetch Cycle)
+	begin
+
+
+		delay: process(clk)
+		begin
+			if(clk='1' and clk'event) then
+				Q <= nQ;           ---state is changed at rising edge
+			end if;
+		end process delay;
+
+		main: process(clk, Q, reset, nQ, equ) --EQU??
+		begin
+			if reset='1' then
+				nQ <= RST;
+			else
+				case Q is
+					when RST =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '0';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						nQ      <= RST1;
+----------------------------------------------------						
+					when RST1 =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '1';
+						wr_mem  <= '0';
+						rd_mem  <= '1';
+						m_mem_a <= '1';
+						m_op1_0 <= '0';
+						m_op1_1 <= '0';
+						m_op2_0 <= '0';
+						m_op2_1 <= '0';
+						m_a2    <= '1';
+						m_a3_0  <= '1';
+						m_a3_1  <= '1';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						op_sel  <= '0';
+						nQ      <= FETCH;
+-----------------------------------------------------					
+					when FETCH =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '0';
+						en_ir   <= '1';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+-----------------------DECODER 1--------------------------
+						if(op_code(3 downto 0) = "0011") then nQ <= LHI;
+						elsif((op_code(3 downto 0) = "0111") or (op_code(3 downto 0) = "1100")) then nQ <= LW1;
+						elsif((op_code(3 downto 0) = "0101") or (op_code(3 downto 0) = "1101")) then nQ <= SW1;
+						elsif(op_code(3 downto 0) = "1000") then nQ <= BEQ;
+						elsif((op_code(3 downto 0) = "1001") or (op_code(3 downto 0) = "1010")) then nQ <= JMP;
+						elsif(op_code(3 downto 0) = "1011") then nQ <= JRI;
+						elsif(op_code(3 downto 0) = "0000") then nQ <= ADI;
+						elsif((condition_code(1 downto 0) = "01" and Z = '0') or (condition_code(1 downto 0) = "10" and C = '0')) then nQ <= HKT;
+						elsif((op_code(3 downto 0) = "0001") and (condition_code(1 downto 0) = "11")) then nQ <= ADL;
+						else nQ <= AON;
+						end if;
+-----------------------------------------------------------						
+						
+					when AON =>
+						en_z    <= '1';
+						en_c    <= '1';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+					   m_op1_0 <= '0';
+						m_op1_1 <= '0';
+						m_op2_0 <= '1';
+						m_op2_1 <= '0';
+						m_a2    <= '0';
+						m_a3_0  <= '0';
+						m_a3_1  <= '1';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						m_z     <= '0';
+						op_sel  <= op_code(1);
+						nQ <= HKT       ; 
+-----------------------------------------------------------						
+					when ADI =>
+						en_z    <= '1';
+						en_c    <= '1';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_op1_0 <= '1';
+						m_op1_1 <= '0';
+						m_op2_0 <= '0';
+						m_op2_1 <= '1';
+						m_a3_0  <= '1';
+						m_a3_1  <= '0';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						m_z     <= '0';
+						op_sel  <= '0';
+						nQ      <= HKT;
+------------------------------------------------------------
+               when JRI =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_op1_0 <= '0';
+						m_op1_1 <= '1';
+						m_op2_0 <= '0';
+						m_op2_1 <= '1';
+						m_a3_0  <= '1';
+						m_a3_1  <= '1';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						op_sel  <= '0';
+						nQ <= HKT;
+------------------------------------------------------------
+				  when JMP =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_op1_0 <= '0';
+						m_op1_1 <= '0';
+						m_op2_0 <= '0';
+						m_op2_1 <= '0';
+						m_a2    <= '1';
+						m_a3_0  <= '0';
+						m_a3_1  <= '0';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						op_sel  <= '0';
+------------------DECODER3----------------------------------
+						if(op_code(0)='1') then nQ <= JAL2;
+						else nQ <= JLR;
+						end if;
+-------------------------------------------------------------						
+				when SW1 =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '1';
+						wr_rf   <= '0';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_op1_0 <= '0';
+						m_op1_1 <= '0';
+						m_op2_0 <= '1';
+						m_op2_1 <= '1';
+						m_a2    <= '0';
+						op_sel  <= '0';
+						nQ <=  SW2;
+------------------------------------------------------------							
+					when ADL =>
+						en_z    <= '1';
+						en_c    <= '1';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_op1_0 <= '1';
+						m_op1_1 <= '1';
+						m_op2_0 <= '0';
+						m_op2_1 <= '1';
+						m_a2    <= '0';
+						m_a3_0  <= '0';
+						m_a3_1  <= '1';
+						m_d3_0  <= '0';
+						m_d3_1  <= '0';
+						m_z     <= '0';
+						op_sel  <= '0';
+						nQ <= HKT ;
+--------------------------------------------------------------
+            when JLR =>
+						en_z    <= '0';
+						en_c    <= '0';
+						en_A    <= '0';
+						wr_rf   <= '1';
+						en_ir   <= '0';
+						en_irf  <= '0';
+						wr_mem  <= '0';
+						rd_mem  <= '0';
+						m_a2    <= '0';
+						m_a3_0  <= '1';
+						m_a3_1  <= '1';
+						m_d3_0  <= '1';
+						m_d3_1  <= '0';
+						nQ <= HKT;
+----------------------------------------------------------------					
+						
+					when HKT =>
+						en_z     <= '0';
+						en_c     <= '0';
+						en_A     <= '0';              
+						wr_rf    <= '1';
+						en_ir    <= '0';
+						en_irf   <= '1';
+						wr_mem   <= '0';
+						rd_mem   <= '1';
+						m_mem_a  <= '1';
+						m_op1_0  <= '0';
+						m_op1_1  <= '0';
+						m_op2_0  <= '0';
+						m_op2_1  <= '0';
+						m_a2     <= '1';
+						m_a3_0   <= '1';
+						m_a3_1   <= '1';
+						m_d3_0   <= '0';
+						m_d3_1   <= '0';
+						op_sel   <= '0';
+						nQ       <= FETCH;	
+						
+------------------------------------------------------------------						
+					when ADL =>
+						en_z     <= '1';
+						en_c     <= '1';
+						en_A     <= '0';
+						m_z      <= '0';
+						wr_rf    <= '1';
+						en_ir    <= '0';
+						en_irf   <= '0';
+						wr_mem   <= '0';
+						rd_mem   <= '0';
+						m_op1_1  <= '1';
+						m_op1_0  <= '1';
+						m_op2_1  <= '1';
+						m_op2_0  <= '0';
+						m_a2     <= '0';
+						m_a3_1   <= '1';
+						m_a3_0   <= '0';
+						m_d3_1   <= '0';
+						m_d3_0   <= '0';
+						op_sel   <= '0';
+						nQ       <= HKT;	
+--------------------------------------------------------
+						when BEQ =>
+						en_z     <= '0';
+						en_c     <= '0';
+						en_A     <= '0';
+						wr_rf    <= '0';
+						en_ir    <= '0';
+						en_irf   <= '0';
+						wr_mem   <= '0';
+						rd_mem   <= '0';
+						m_a2     <= '0';
+						m_comp_a <= '0';
+						m_comp_b <= '0';
+						
+-----------------DECODER2----------------------------------
+						case equ is
+							when '0' => nQ <= HKT;
+							when others => nQ <= JAL2;
+						end case;
+-----------------------------------------------------------					
+					when JAL2 =>
+						en_z     <= '0';
+						en_c     <= '0';
+						en_A     <= '0';
+						wr_rf    <= '1';
+						en_ir    <= '0';
+						en_irf   <= '0';
+						wr_mem   <= '0';
+						rd_mem   <= '0';
+						m_op1_1  <= '1';
+						m_op1_0  <= '0';
+						m_op2_1  <= '0';
+						m_op2_0  <= '1';
+						m_a2     <= '1';
+						m_a3_1   <= '1';
+						m_a3_0   <= '1';
+						m_d3_1   <= '0';
+						m_d3_0   <= '0';
+						op_sel   <= '0';
+						nQ       <= HKT;
+--------------------------------------------------------
+				when LHI =>
+						en_z<='0';
+						en_z<='0';
+						en_A<='0';
+						wr_rf<='1';
+						en_ir<='0';
+						en_irf<='0';
+						wr_mem<='0';
+						rd_mem<='0';
+						m_a3_0<='0';
+						m_a3_1<='0';
+						m_d3_0<='0';
+						m_d3_1<='1';
+						nQ<=HKT;
+-------------------------------------------------------------					
+	
+					when LW1 =>
+					   en_Z<='1';
+						en_C<='0';
+						en_A<='1';
+						wr_rf<='0';
+						en_ir<='0';
+						en_irf<='0';
+						wr_mem<='0';
+						rd_mem<='0';
+						m_mem_a<='';
+						m_op1_0<='0';
+						m_op1_1<='0';
+						m_op2_0<='1';
+						m_op2_1<='1';
+						m_a2<='0';
+						m_z <= '1';
+						m_comp_a<='1';
+						m_comp_b<='1';
+						op_sel<='0';
+						nQ<=LW2;
+---------------------------------------------------------						
+					when LW2 =>
+					   en_Z<='0';
+						en_C<='0';
+						en_A<='0';
+						m_Z<='';
+						wr_rf<='1';
+						en_ir<='0';
+						en_irf<='0';
+						wr_mem<='0';
+						rd_mem<='1';
+						m_mem_a<='0';
+						m_a3_0<='0';
+						m_a3_1<='0';
+						m_d3_0<='1';
+						m_d3_1<='1';
+						nQ<=HKT;
+-----------------------------------------------------------						
+					
+					when SW2=>
+					    en_z<='0';
+						en_c<='0';
+						en_A<='0';
+						wr_rf<='0';
+						wr_mem<='1';
+						rd_mem<='0';
+						m_mem_a<='0';
+						nQ<=HKT;
+---------------------------------------------------------					
+				end case;
+			end if;
+			end process;
+	end behave;
+
+
