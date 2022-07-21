@@ -1,0 +1,408 @@
+Power Analyzer report for IITB_RISC
+Wed May 11 14:52:54 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Power Analyzer Summary
+  3. Power Analyzer Settings
+  4. Indeterminate Toggle Rates
+  5. Operating Conditions Used
+  6. Thermal Power Dissipation by Block
+  7. Thermal Power Dissipation by Block Type
+  8. Thermal Power Dissipation by Hierarchy
+  9. Core Dynamic Thermal Power Dissipation by Clock Domain
+ 10. Current Drawn from Voltage Supplies Summary
+ 11. VCCIO Supply Current Drawn by I/O Bank
+ 12. VCCIO Supply Current Drawn by Voltage
+ 13. Confidence Metric Details
+ 14. Signal Activities
+ 15. Power Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------------+
+; Power Analyzer Summary                                                                    ;
++----------------------------------------+--------------------------------------------------+
+; Power Analyzer Status                  ; Successful - Wed May 11 14:52:54 2022            ;
+; Quartus Prime Version                  ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition      ;
+; Revision Name                          ; IITB_RISC                                        ;
+; Top-level Entity Name                  ; IITB_RISC                                        ;
+; Family                                 ; MAX V                                            ;
+; Device                                 ; 5M1270ZF256C4                                    ;
+; Power Models                           ; Final                                            ;
+; Total Thermal Power Dissipation        ; 3.80 mW                                          ;
+; Core Dynamic Thermal Power Dissipation ; 0.00 mW                                          ;
+; Core Static Thermal Power Dissipation  ; 3.08 mW                                          ;
+; I/O Thermal Power Dissipation          ; 0.72 mW                                          ;
+; Power Estimation Confidence            ; Low: user provided insufficient toggle rate data ;
++----------------------------------------+--------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Power Analyzer Settings                                                                                                  ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+; Option                                                           ; Setting                               ; Default Value ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+; Use smart compilation                                            ; Off                                   ; Off           ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                                    ; On            ;
+; Enable compact report table                                      ; Off                                   ; Off           ;
+; Default Power Input I/O Toggle Rate                              ; 12.5%                                 ; 12.5%         ;
+; Preset Cooling Solution                                          ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ;               ;
+; Default Power Toggle Rate                                        ; 12.5%                                 ; 12.5%         ;
+; Use vectorless estimation                                        ; On                                    ; On            ;
+; Use Input Files                                                  ; Off                                   ; Off           ;
+; Filter Glitches in VCD File Reader                               ; On                                    ; On            ;
+; Power Analyzer Report Signal Activity                            ; Off                                   ; Off           ;
+; Power Analyzer Report Power Dissipation                          ; Off                                   ; Off           ;
+; Device Power Characteristics                                     ; TYPICAL                               ; TYPICAL       ;
+; Automatically Compute Junction Temperature                       ; On                                    ; On            ;
+; Specified Junction Temperature                                   ; 25                                    ; 25            ;
+; Ambient Temperature                                              ; 25                                    ; 25            ;
+; Use Custom Cooling Solution                                      ; Off                                   ; Off           ;
++------------------------------------------------------------------+---------------------------------------+---------------+
+
+
++----------------------------------------+
+; Indeterminate Toggle Rates             ;
++----------+-----------------------------+
+; Node     ; Reason                      ;
++----------+-----------------------------+
+; clock_50 ; No valid clock domain found ;
+; clk      ; No valid clock domain found ;
+; reset    ; No valid clock domain found ;
++----------+-----------------------------+
+
+
++----------------------------------------------------------------------+
+; Operating Conditions Used                                            ;
++-----------------------------------------+----------------------------+
+; Setting                                 ; Value                      ;
++-----------------------------------------+----------------------------+
+; Device power characteristics            ; Typical                    ;
+;                                         ;                            ;
+; Voltages                                ;                            ;
+;     VCCINT                              ; 1.80 V                     ;
+;     3.3-V LVTTL I/O Standard            ; 3.3 V                      ;
+;                                         ;                            ;
+; Auto computed junction temperature      ; 25.1 degrees Celsius       ;
+;     Ambient temperature                 ; 25.0 degrees Celsius       ;
+;     Junction-to-Case thermal resistance ; 11.80 degrees Celsius/Watt ;
+;     Case-to-Ambient thermal resistance  ; 27.50 degrees Celsius/Watt ;
++-----------------------------------------+----------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Block                                                                                                           ;
++------------+------------+---------------------+-----------------------------+--------------------------------+-------------------------------+
+; Block Name ; Block Type ; Total Thermal Power ; Block Thermal Dynamic Power ; Block Thermal Static Power (1) ; Routing Thermal Dynamic Power ;
++------------+------------+---------------------+-----------------------------+--------------------------------+-------------------------------+
+(1) The "Thermal Power Dissipation by Block" Table has been hidden. To show this table, please select the "Write power dissipation by block to report file" option under "PowerPlay Power Analyzer Settings".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Block Type                                                                                                                                                                   ;
++------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+; Block Type ; Total Thermal Power by Block Type ; Block Thermal Dynamic Power ; Block Thermal Static Power (1) ; Routing Thermal Dynamic Power ; Block Average Toggle Rate (millions of transitions / sec) ;
++------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+; Logic cell ; 0.00 mW                           ; 0.00 mW                     ; --                             ; 0.00 mW                       ;    0.000                                                  ;
+; I/O        ; 0.00 mW                           ; 0.00 mW                     ; 0.00 mW                        ; 0.00 mW                       ;    0.000                                                  ;
++------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
+(1) The "Block Thermal Static Power" for all block types except Pins and the Voltage Regulator, if one exists, is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Thermal Power Dissipation by Hierarchy                                                                                                                                                                                                                                                                       ;
++----------------------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------+
+; Compilation Hierarchy Node                         ; Total Thermal Power by Hierarchy (1) ; Block Thermal Dynamic Power (1) ; Block Thermal Static Power (1)(2) ; Routing Thermal Dynamic Power (1) ; Full Hierarchy Name                                                                                    ;
++----------------------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------+
+; |IITB_RISC                                         ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; 0.00 mW (0.00 mW)                 ; 0.00 mW (0.00 mW)                 ; |IITB_RISC                                                                                             ;
+;     |controlpath:controlpath_risc                  ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|controlpath:controlpath_risc                                                                ;
+;     |datapath:datapath_risc                        ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc                                                                      ;
+;         |alu:alu_unit                              ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|alu:alu_unit                                                         ;
+;         |dflipflop:carryFF                         ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|dflipflop:carryFF                                                    ;
+;         |eq_check:compare                          ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|eq_check:compare                                                     ;
+;         |instruction_register:Inst_reg_exe         ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|instruction_register:Inst_reg_exe                                    ;
+;             |dregister:next_instruction1           ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|instruction_register:Inst_reg_exe|dregister:next_instruction1        ;
+;         |instruction_register_fetch:Inst_reg_fetch ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|instruction_register_fetch:Inst_reg_fetch                            ;
+;             |dregister:next_instruction            ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|instruction_register_fetch:Inst_reg_fetch|dregister:next_instruction ;
+;         |mux_2to1_nbits:mux_a2                     ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_2to1_nbits:mux_a2                                                ;
+;         |mux_4to1_nbits:mux_a3                     ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_4to1_nbits:mux_a3                                                ;
+;         |mux_4to1_nbits:mux_d3                     ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_4to1_nbits:mux_d3                                                ;
+;         |mux_2to1_nbits:mux_mem_a                  ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_2to1_nbits:mux_mem_a                                             ;
+;         |mux_4to1_nbits:mux_op1                    ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_4to1_nbits:mux_op1                                               ;
+;         |mux_4to1_nbits:mux_op2                    ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|mux_4to1_nbits:mux_op2                                               ;
+;         |memory:RAM                                ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|memory:RAM                                                           ;
+;         |dregister:regA                            ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|dregister:regA                                                       ;
+;         |register_file:RF                          ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|register_file:RF                                                     ;
+;         |dflipflop:zeroFF                          ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |IITB_RISC|datapath:datapath_risc|dflipflop:zeroFF                                                     ;
++----------------------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------+
+(1) Value in parentheses is the power consumed at that level of hierarchy. Value not in parentheses is the power consumed at that level of hierarchy plus the power consumed by all levels of hierarchy below it.
+
+(2) The "Block Thermal Static Power" for all levels of hierarchy except the top-level hierarchy is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
+
+
++--------------------------------------------------------------------+
+; Core Dynamic Thermal Power Dissipation by Clock Domain             ;
++-----------------+-----------------------+--------------------------+
+; Clock Domain    ; Clock Frequency (MHz) ; Total Core Dynamic Power ;
++-----------------+-----------------------+--------------------------+
+; No clock domain ; 0.00                  ; 0.00                     ;
++-----------------+-----------------------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Current Drawn from Voltage Supplies Summary                                                                                        ;
++----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; Voltage Supply ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
++----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; VCCIO          ; 0.22 mA                 ; 0.00 mA                   ; 0.22 mA                  ; 0.22 mA                          ;
+; VCCINT         ; 1.71 mA                 ; 0.00 mA                   ; 1.71 mA                  ; 1.71 mA                          ;
++----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+(1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
+(2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
+
+
++-----------------------------------------------------------------------------------------------+
+; VCCIO Supply Current Drawn by I/O Bank                                                        ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; I/O Bank ; VCCIO Voltage ; Total Current Drawn ; Dynamic Current Drawn ; Static Current Drawn ;
++----------+---------------+---------------------+-----------------------+----------------------+
+; 1        ; 3.3V          ; 0.05 mA             ; 0.00 mA               ; 0.05 mA              ;
+; 2        ; 3.3V          ; 0.05 mA             ; 0.00 mA               ; 0.05 mA              ;
+; 3        ; 3.3V          ; 0.05 mA             ; 0.00 mA               ; 0.05 mA              ;
+; 4        ; 3.3V          ; 0.05 mA             ; 0.00 mA               ; 0.05 mA              ;
++----------+---------------+---------------------+-----------------------+----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; VCCIO Supply Current Drawn by Voltage                                                                                             ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; VCCIO Voltage ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+; 3.3V          ; 0.22 mA                 ; 0.00 mA                   ; 0.22 mA                  ; 0.22 mA                          ;
++---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
+(1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
+(2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Confidence Metric Details                                                                                                                          ;
++----------------------------------------------------------------------------------------+--------------+-------------+--------------+---------------+
+; Data Source                                                                            ; Total        ; Pin         ; Registered   ; Combinational ;
++----------------------------------------------------------------------------------------+--------------+-------------+--------------+---------------+
+; Simulation (from file)                                                                 ;              ;             ;              ;               ;
+;     -- Number of signals with Toggle Rate from Simulation                              ; 0 (0.0%)     ; 0 (0.0%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Simulation                       ; 0 (0.0%)     ; 0 (0.0%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;                                                                                        ;              ;             ;              ;               ;
+; Node, entity or clock assignment                                                       ;              ;             ;              ;               ;
+;     -- Number of signals with Toggle Rate from Node, entity or clock assignment        ; 0 (0.0%)     ; 0 (0.0%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 0 (0.0%)     ; 0 (0.0%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;                                                                                        ;              ;             ;              ;               ;
+; Vectorless estimation                                                                  ;              ;             ;              ;               ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 1053 (99.7%) ; 128 (97.7%) ; 307 (100.0%) ; 618 (100.0%)  ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 2 (0.2%)     ; 0 (0.0%)    ; 2 (0.7%)     ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 1053 (99.7%) ; 128 (97.7%) ; 307 (100.0%) ; 618 (100.0%)  ;
+;                                                                                        ;              ;             ;              ;               ;
+; Default assignment                                                                     ;              ;             ;              ;               ;
+;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)     ; 0 (0.0%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Default assignment               ; 3 (0.3%)     ; 3 (2.3%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
+;                                                                                        ;              ;             ;              ;               ;
+; Assumed 0                                                                              ;              ;             ;              ;               ;
+;     -- Number of signals with Toggle Rate assumed 0                                    ; 3 (0.3%)     ; 3 (2.3%)    ; 0 (0.0%)     ; 0 (0.0%)      ;
++----------------------------------------------------------------------------------------+--------------+-------------+--------------+---------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Activities                                                                                                                           ;
++--------+------+---------------------------------------------+-------------------------+--------------------+--------------------------------+
+; Signal ; Type ; Toggle Rate (millions of transitions / sec) ; Toggle Rate Data Source ; Static Probability ; Static Probability Data Source ;
++--------+------+---------------------------------------------+-------------------------+--------------------+--------------------------------+
+(1) The "Signal Activity" Table has been hidden. To show this table, please select the "Write signal activities to report file" option under "PowerPlay Power Analyzer Settings".
+
+
++-------------------------+
+; Power Analyzer Messages ;
++-------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Power Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed May 11 14:52:51 2022
+Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off IITB_RISC2022 -c IITB_RISC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Warning (335093): The Timing Analyzer is analyzing 22 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'IITB_RISC.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Warning (332060): Node: clk was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register datapath:datapath_risc|register_file:RF|registers[0][0] is being clocked by clk
+Warning (332060): Node: reset was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch controlpath:controlpath_risc|m_d3_1 is being clocked by reset
+Warning (332060): Node: controlpath:controlpath_risc|op_sel was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Latch datapath:datapath_risc|alu:alu_unit|carry is being clocked by controlpath:controlpath_risc|op_sel
+Warning (332068): No clocks defined in design.
+Info (223000): Starting Vectorless Power Activity Estimation
+Warning (222013): Relative toggle rates could not be calculated because no clock domain could be identified for some nodes
+Info (223001): Completed Vectorless Power Activity Estimation
+Warning (215026): The following preset cooling solution was specified "23 MM HEAT SINK WITH 200 LFPM AIRFLOW", but the string is invalid. The following default cooling solution "No heat sink with still air" will be used.
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Warning (218001): Found 128 output pins without output pin load capacitance assignment
+    Warning (218002): Pin "r0[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r0[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r1[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r2[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r3[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r4[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r5[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r6[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[0]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[1]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[2]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[3]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[4]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[5]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[6]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[7]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[8]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[9]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[10]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[11]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[12]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[13]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[14]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+    Warning (218002): Pin "r7[15]" has no specified output pin load capacitance -- assuming default load capacitance of 10 pF for Power Estimation
+Info (215049): Average toggle rate for this design is 0.000 millions of transitions / sec
+Info (215031): Total thermal power estimate for the design is 3.80 mW
+Info: Quartus Prime Power Analyzer was successful. 0 errors, 138 warnings
+    Info: Peak virtual memory: 4688 megabytes
+    Info: Processing ended: Wed May 11 14:52:54 2022
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
+
+

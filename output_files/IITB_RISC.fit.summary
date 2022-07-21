@@ -1,0 +1,11 @@
+Fitter Status : Successful - Wed May 11 14:52:46 2022
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : IITB_RISC
+Top-level Entity Name : IITB_RISC
+Family : MAX V
+Device : 5M1270ZF256C4
+Timing Models : Final
+Total logic elements : 751 / 1,270 ( 59 % )
+Total pins : 131 / 211 ( 62 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

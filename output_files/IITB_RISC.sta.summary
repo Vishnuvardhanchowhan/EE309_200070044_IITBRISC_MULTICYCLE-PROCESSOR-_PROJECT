@@ -1,0 +1,49 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clk'
+Slack : -26.411
+TNS   : -8706.772
+
+Type  : Setup 'controlpath:controlpath_risc|op_sel'
+Slack : -20.532
+TNS   : -20.532
+
+Type  : Setup 'reset'
+Slack : -4.921
+TNS   : -31.143
+
+Type  : Hold 'reset'
+Slack : -6.093
+TNS   : -35.170
+
+Type  : Hold 'clk'
+Slack : -0.015
+TNS   : -0.015
+
+Type  : Hold 'controlpath:controlpath_risc|op_sel'
+Slack : 2.495
+TNS   : 0.000
+
+Type  : Recovery 'clk'
+Slack : -0.607
+TNS   : -100.762
+
+Type  : Removal 'clk'
+Slack : 0.657
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clk'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'reset'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'controlpath:controlpath_risc|op_sel'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------
