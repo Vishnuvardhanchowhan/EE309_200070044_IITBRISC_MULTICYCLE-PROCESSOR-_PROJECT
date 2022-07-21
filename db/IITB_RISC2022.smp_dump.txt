@@ -1,0 +1,20 @@
+
+State Machine - |IITB_RISC|controlpath:controlpath_risc|Q
+Name Q.SW2 Q.LW2 Q.LW1 Q.LHI Q.JAL2 Q.BEQ Q.HKT Q.JLR Q.ADL Q.SW1 Q.JMP Q.JRI Q.ADI Q.AON Q.FETCH Q.RST1 Q.RST 
+Q.RST 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Q.RST1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+Q.FETCH 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+Q.AON 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+Q.ADI 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+Q.JRI 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+Q.JMP 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+Q.SW1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+Q.ADL 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+Q.JLR 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+Q.HKT 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+Q.BEQ 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+Q.JAL2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+Q.LHI 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Q.LW1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Q.LW2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Q.SW2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
